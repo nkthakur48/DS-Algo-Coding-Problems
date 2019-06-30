@@ -30,7 +30,7 @@ function printStep(totalSteps, step) {
   console.log(printArr.join(""));
 }
 
-function steps(n) {
+function __steps(n) {
   for (let row = 0; row < n; row++) {
     let stair = "";
     for (let col = 0; col < n; col++) {
@@ -44,4 +44,20 @@ function steps(n) {
   }
 }
 
+function steps(n, row = 0, stair = "") {
+  // recursive solution
+  if (n === row) {
+    return;
+  }
+  if (stair.length === n) {
+    console.log(stair);
+    return steps(n, row + 1);
+  }
+  if (stair.length <= row) {
+    stair += "#";
+  } else {
+    stair += " ";
+  }
+  return steps(n, row, stair);
+}
 module.exports = steps;
